@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="50%" stop-color="#0d1b2a" />
+      <stop offset="100%" stop-color="#1b263b" />
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b4a" />
+      <stop offset="50%" stop-color="#ff9f43" />
+      <stop offset="100%" stop-color="#00d2d3" />
+    </linearGradient>
+
+    <linearGradient id="queueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b4a" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ff9f43" stop-opacity="0.05" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .title-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      font-size: 50px;
+      fill: #ffffff;
+      letter-spacing: -1px;
+    }
+    .subtitle-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-size: 19px;
+      fill: #94a3b8;
+    }
+    .badge-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      fill: #e2e8f0;
+    }
+
+    /* Ambient animated packet pulses */
+    @keyframes floatPacket1 {
+      0% { transform: translate(0, 0); opacity: 0; }
+      15% { opacity: 0.8; }
+      85% { opacity: 0.8; }
+      100% { transform: translate(520px, 0); opacity: 0; }
+    }
+    @keyframes floatPacket2 {
+      0% { transform: translate(0, 0); opacity: 0; }
+      20% { opacity: 0.7; }
+      80% { opacity: 0.7; }
+      100% { transform: translate(580px, 0); opacity: 0; }
+    }
+    @keyframes pulseOrb {
+      0%, 100% { transform: scale(1); opacity: 0.35; }
+      50% { transform: scale(1.18); opacity: 0.6; }
+    }
+    @keyframes waveFlow {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -80; }
+    }
+
+    .packet-1 { animation: floatPacket1 5s linear infinite; }
+    .packet-2 { animation: floatPacket2 6.5s linear infinite 1.8s; }
+    .packet-3 { animation: floatPacket1 4.2s linear infinite 2.5s; }
+    .orb-pulse { transform-origin: center; animation: pulseOrb 6s ease-in-out infinite; }
+    .flow-line { stroke-dasharray: 8 6; animation: waveFlow 3s linear infinite; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="360" rx="16" fill="url(#bgGradient)" />
+
+  <!-- Subtle Grid Pattern in Background -->
+  <g opacity="0.07" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="60" x2="1200" y2="60" />
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="180" x2="1200" y2="180" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="150" y1="0" x2="150" y2="360" />
+    <line x1="300" y1="0" x2="300" y2="360" />
+    <line x1="450" y1="0" x2="450" y2="360" />
+    <line x1="600" y1="0" x2="600" y2="360" />
+    <line x1="750" y1="0" x2="750" y2="360" />
+    <line x1="900" y1="0" x2="900" y2="360" />
+    <line x1="1050" y1="0" x2="1050" y2="360" />
+  </g>
+
+  <!-- Dynamic Ambient Glowing Orbs in Background -->
+  <circle cx="1080" cy="80" r="140" fill="#ff6b4a" filter="url(#glow)" class="orb-pulse" style="animation-duration: 7s;" />
+  <circle cx="980" cy="280" r="160" fill="#00d2d3" filter="url(#glow)" class="orb-pulse" style="animation-duration: 9s; animation-delay: 2s;" />
+
+  <!-- Animated Message Pipeline / Bus Flows (Background visual) -->
+  <g opacity="0.4">
+    <!-- Stream Line 1 -->
+    <path d="M 520 80 C 720 80, 800 130, 1140 130" fill="none" stroke="#ff9f43" stroke-width="2" class="flow-line" />
+    <!-- Stream Line 2 -->
+    <path d="M 520 280 C 700 280, 820 230, 1140 230" fill="none" stroke="#00d2d3" stroke-width="2" class="flow-line" />
+    
+    <!-- Moving Packets -->
+    <g class="packet-1">
+      <circle cx="560" cy="80" r="5" fill="#ff6b4a" filter="url(#glow)" />
+    </g>
+    <g class="packet-2">
+      <circle cx="540" cy="280" r="6" fill="#00d2d3" filter="url(#glow)" />
+    </g>
+    <g class="packet-3">
+      <circle cx="580" cy="80" r="4" fill="#ffffff" filter="url(#glow)" />
+    </g>
+  </g>
+
+  <!-- Foreground Content: Brand Top Accent Tag -->
+  <g transform="translate(80, 52)">
+    <rect width="180" height="28" rx="14" fill="url(#accentGrad)" fill-opacity="0.18" stroke="url(#accentGrad)" stroke-width="1.2" />
+    <circle cx="16" cy="14" r="5" fill="#ff6b4a" />
+    <text x="30" y="19" class="badge-text" fill="#ff9f43">ENTERPRISE MESSAGING</text>
+  </g>
+
+  <!-- Foreground Content: Main Title and Subtitle -->
+  <g transform="translate(80, 138)">
+    <text x="0" y="0" class="title-text">Awesome AMQP Client Libraries</text>
+    <text x="0" y="42" class="subtitle-text">Curated ecosystem of AMQP 0-9-1 &amp; 1.0 protocols, message brokers, task queues &amp; cloud middleware</text>
+  </g>
+
+  <!-- Foreground Feature Badges / Category Pills -->
+  <g transform="translate(80, 240)">
+    <!-- Pill 1: RabbitMQ -->
+    <g transform="translate(0, 0)">
+      <rect width="130" height="38" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.2" />
+      <text x="22" y="24" class="badge-text" fill="#f8fafc">🐇 RabbitMQ</text>
+    </g>
+
+    <!-- Pill 2: AMQP 1.0 / 0-9-1 -->
+    <g transform="translate(142, 0)">
+      <rect width="168" height="38" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.2" />
+      <text x="20" y="24" class="badge-text" fill="#f8fafc">⚡ AMQP 0-9-1 / 1.0</text>
+    </g>
+
+    <!-- Pill 3: Celery & Kombu -->
+    <g transform="translate(322, 0)">
+      <rect width="160" height="38" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.2" />
+      <text x="20" y="24" class="badge-text" fill="#f8fafc">🌿 Celery &amp; Kombu</text>
+    </g>
+
+    <!-- Pill 4: Cloud Brokers -->
+    <g transform="translate(494, 0)">
+      <rect width="165" height="38" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.2" />
+      <text x="20" y="24" class="badge-text" fill="#f8fafc">☁️ SQS &amp; Azure Bus</text>
+    </g>
+  </g>
+
+  <!-- Decorative Border Accents -->
+  <rect x="0" y="0" width="1200" height="360" rx="16" fill="none" stroke="url(#accentGrad)" stroke-width="1.5" opacity="0.4" />
+</svg>
